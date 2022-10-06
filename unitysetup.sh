@@ -9,3 +9,5 @@ echo "..........Running tests.........."
 python -m pytest Tests/ -s
 
 echo "Tests done"
+
+
