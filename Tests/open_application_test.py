@@ -8,6 +8,7 @@ class TestOpenApplication(TestBase):
         self.login_screen = LoginScreen(self.alt_driver, self.appium_driver)
 
     def test_open_application(self):
-        print("objects are found by altunity")
+        print("test open application")
         self.guest_obj = self.login_screen.guest_link()
         self.guest_obj.tap()
+        assert self.login_screen.is_displayed()
