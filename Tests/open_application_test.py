@@ -9,8 +9,11 @@ class TestOpenApplication(TestBase):
 
     def test_open_application_DEV_T27(self):
         print("test open application")
-        self.guest_obj = self.login_screen.guest_link()
-        self.guest_obj.tap()
-        assert self.login_screen.is_displayed()
+        assert self.login_screen.is_signed_in()
+        self.alt_driver.get_png_screenshot("../Screenshots")
 
 
+
+    def tearDown(self):
+        self.alt_driver.stop()
+        self.appium_driver.quit()
