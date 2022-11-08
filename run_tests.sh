@@ -9,7 +9,7 @@ PID=$!
 sleep 5
 
 echo "..........Running tests.........."
-python -m pytest Tests/*guest* -s -v --junitxml=Output/junitxml_report.xml
+python -m pytest Tests/*create* -s -v --junitxml=Output/junitxml_report.xml
 
 echo "..........Tests Done.........."
 

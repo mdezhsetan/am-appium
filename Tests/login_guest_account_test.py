@@ -2,7 +2,7 @@ from Resources.login_screen import LoginScreen
 from Tests.base_test import TestBase
 
 
-class TestOpenApplication(TestBase):
+class TestGuestAccount(TestBase):
 
     def setUp(self):
         self.login_screen = LoginScreen(self.alt_driver, self.appium_driver)

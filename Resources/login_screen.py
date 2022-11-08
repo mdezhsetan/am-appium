@@ -7,7 +7,7 @@ class LoginScreen(BasePage):
 
     def guest_link(self):
         try:
-            return self.alt_driver.wait_for_object(By.ID, "21364")
+            return self.alt_driver.wait_for_object(By.PATH, "//*//GuestRow//Card")
         except NotFoundException:
             return None
 
@@ -20,6 +20,24 @@ class LoginScreen(BasePage):
     def password_input(self):
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*//PasswordInputField")
+        except NotFoundException:
+            return None
+
+    def signuptoggle_link(self):
+        try:
+            return self.alt_driver.wait_for_object(By.PATH, "//*//SignupToggle")
+        except NotFoundException:
+            return None
+
+    def signup_button(self):
+        try:
+            return self.alt_driver.wait_for_object(By.PATH, "//*//SignUpButton")
+        except NotFoundException:
+            return None
+
+    def toggle_ReceiveScheduledNotifications_check(self):
+        try:
+            return self.alt_driver.wait_for_object(By.PATH, "//*///toggle_ReceiveScheduledNotifications")
         except NotFoundException:
             return None
 
@@ -52,10 +70,8 @@ class LoginScreen(BasePage):
 
     def is_signed_in(self):
         try:
-            if self.account_selection_screen() is None:
-                return True
-            print("Is not signed In!")
-            return False
+            self.alt_driver.wait_for_object_to_not_be_present(By.PATH, "/Canvas/HomeScreenNew/AccountSelection")
+            return True
         except Exception as ex:
             print(repr(ex))
             return False
