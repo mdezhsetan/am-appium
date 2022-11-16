@@ -1,17 +1,15 @@
 import unittest
 
-from altunityrunner import AltUnityDriver
+from alttester import AltDriver
 from appium import webdriver
+
+from Resources.accounts import Accounts
 
 
 class TestBase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.registered_email_text = "qaaccount@gmx.com"
-        cls.registered_pass_text = "welcome20!@#"
-        cls.password = "Welcome20!"
-
         cls.desired_capabilities = {
             "deviceName": "Mahshad A52",
             "udid": "RZ8T11EEMNJ",
@@ -24,10 +22,13 @@ class TestBase(unittest.TestCase):
         }
         cls.appium_driver = webdriver.Remote(command_executor='http://127.0.0.1:{0}/wd/hub'.format(4723),
                                              desired_capabilities=cls.desired_capabilities)
-        cls.alt_driver = AltUnityDriver()
+        cls.alt_driver = AltDriver()
 
-    # @classmethod
-    # def tearDownClass(cls):
-    #     print("Ending")
-    #     cls.alt_driver.stop()
-    #     cls.appium_driver.quit()
+    def take_screenshot(self, subject):
+        self.alt_driver.get_png_screenshot("./Screenshots/" + subject + Accounts.current_time_string() + ".png")
+
+# @classmethod
+# def tearDownClass(cls):
+#     print("Ending")
+#     cls.alt_driver.stop()
+#     cls.appium_driver.quit()

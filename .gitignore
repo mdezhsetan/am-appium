@@ -3,3 +3,5 @@ __pycache__/
 commands.txt
 .pytest_cache/
 *.log
+Data/test_accounts.csv
+Screenshots

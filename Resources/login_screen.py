@@ -1,4 +1,4 @@
-from altunityrunner import By, NotFoundException, WaitTimeOutException
+from alttester  import By, NotFoundException, WaitTimeOutException
 
 from Resources.base_page import BasePage
 
@@ -25,7 +25,7 @@ class LoginScreen(BasePage):
 
     def signuptoggle_link(self):
         try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//SignupToggle")
+            return self.alt_driver.wait_for_object(By.PATH, "//*//SignupToggle//Create")
         except NotFoundException:
             return None
 
@@ -67,6 +67,23 @@ class LoginScreen(BasePage):
         except WaitTimeOutException:
             print("account selection screen not found!")
             return None
+
+
+    def OnboardingSelectionManager_is_Displayed(self):
+        try:
+            self.alt_driver.wait_for_object(By.PATH, "//*//OnboardingSelectionManager")
+            return True
+        except Exception as ex:
+            print(repr(ex))
+            return False
+
+        # get_isActiveAndEnabled() Boolean
+
+    def login_function(self, username, password, button):
+        self.username_input().set_text(username)
+        self.password_input().set_text(password)
+        button.tap()
+        self.popup_yes_button().tap()
 
     def is_signed_in(self):
         try:
