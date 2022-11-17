@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="34.121" timestamp="2022-11-16T14:07:05.907094" hostname="DESKTOP-5NO08LJ"><testcase classname="Tests.login_create_account_test.TestLoginCreateAccount" name="test_login_createaccount_DEV_T29" time="31.450" /></testsuite></testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="33.273" timestamp="2022-11-17T15:16:41.124229" hostname="DESKTOP-5NO08LJ"><testcase classname="Tests.J01en.j01_journey_accessibility_test.TestJ01AllAboutAm" name="test_j01_accessibility_DEV_T173" time="32.117"><failure message="NameError: name 'touch_and_hold' is not defined">self = &lt;j01_journey_accessibility_test.TestJ01AllAboutAm testMethod=test_j01_accessibility_DEV_T173&gt;
+
+    def test_j01_accessibility_DEV_T173(self):
+        print("test j01")
+    
+        self.go_to_j01()
+        # sleep(3)
+        JOURNEYS_CARD = self.main_screen.journeys_card()
+&gt;       touch_and_hold(JOURNEYS_CARD, 3)
+E       NameError: name 'touch_and_hold' is not defined
+
+Tests\J01en\j01_journey_accessibility_test.py:29: NameError</failure></testcase></testsuite></testsuites>

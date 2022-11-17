@@ -27,6 +27,10 @@ class TestBase(unittest.TestCase):
     def take_screenshot(self, subject):
         self.alt_driver.get_png_screenshot("./Screenshots/" + subject + Accounts.current_time_string() + ".png")
 
+    def touch_and_hold(self, desired_object, duration):
+        card_position = desired_object.get_screen_position()
+        self.hold_button(duration=duration, coordinates=card_position)
+
 # @classmethod
 # def tearDownClass(cls):
 #     print("Ending")

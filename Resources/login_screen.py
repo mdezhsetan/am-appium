@@ -1,65 +1,66 @@
-from alttester  import By, NotFoundException, WaitTimeOutException
+from alttester import NotFoundException, WaitTimeOutException
+from alttester.altdriver import *
 
 from Resources.base_page import BasePage
 
 
 class LoginScreen(BasePage):
 
-    def guest_link(self):
+    def guest_link(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*//GuestRow//Card")
         except NotFoundException:
             return None
 
-    def username_input(self):
+    def username_input(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*//UsernameInputField")
         except NotFoundException:
             return None
 
-    def password_input(self):
+    def password_input(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*//PasswordInputField")
         except NotFoundException:
             return None
 
-    def signuptoggle_link(self):
+    def signuptoggle_link(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*//SignupToggle//Create")
         except NotFoundException:
             return None
 
-    def signup_button(self):
+    def signup_button(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*//SignUpButton")
         except NotFoundException:
             return None
 
-    def toggle_ReceiveScheduledNotifications_check(self):
+    def toggle_ReceiveScheduledNotifications_check(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//*///toggle_ReceiveScheduledNotifications")
         except NotFoundException:
             return None
 
-    def signin_button(self):
+    def signin_button(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.NAME, "SignInButton")
         except NotFoundException:
             return None
 
-    def popup_after_signin(self):
+    def popup_after_signin(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//Canvas//PopupOverlay")
         except NotFoundException:
             return None
 
-    def popup_yes_button(self):
+    def popup_yes_button(self) -> AltObject | None:
         try:
             return self.alt_driver.wait_for_object(By.PATH, "//Canvas//PopupOverlay//*//YesButton")
         except NotFoundException:
             return None
 
-    def account_selection_screen(self):
+    def account_selection_screen(self) -> AltObject | None:
         try:
             account_selection_obj = self.alt_driver.wait_for_object(By.PATH, "/Canvas/HomeScreenNew/AccountSelection",
                                                                     timeout=5)
@@ -67,7 +68,6 @@ class LoginScreen(BasePage):
         except WaitTimeOutException:
             print("account selection screen not found!")
             return None
-
 
     def OnboardingSelectionManager_is_Displayed(self):
         try:
