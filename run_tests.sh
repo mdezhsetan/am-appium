@@ -1,5 +1,4 @@
-echo "..........ADB Command.........."
-adb kill-server
+echo "............ADB Command............"
 adb forward tcp:13000 tcp:13000
 
 echo "..........Starting Appium.........."
@@ -11,5 +10,5 @@ echo "...........Running tests..........."
 python -m pytest Tests/J01en/*j01* -s -v --junitxml=Output/junitxml_report.xml
 
 echo "............Tests Done............"
-
+adb kill-server
 kill $PID

@@ -8,7 +8,7 @@ class LoginScreen(BasePage):
 
     def guest_link(self) -> AltObject | None:
         try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//GuestRow//Card")
+            return self.alt_driver.wait_for_object(By.PATH ,"//*//GuestRow//Card")
         except NotFoundException:
             return None
 
