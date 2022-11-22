@@ -31,6 +31,20 @@ class TestBase(unittest.TestCase):
         card_position = desired_object.get_screen_position()
         self.hold_button(duration=duration, coordinates=card_position)
 
+    @staticmethod
+    def format_2digit(number):
+        formatter = {
+            1: "01",
+            2: "02",
+            3: "03",
+            4: "04",
+            5: "05",
+            6: "06",
+            7: "07",
+            8: "08",
+            9: "09",
+        }
+        return formatter.get(number, number)
 # @classmethod
 # def tearDownClass(cls):
 #     print("Ending")
