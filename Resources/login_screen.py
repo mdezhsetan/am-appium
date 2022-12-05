@@ -1,10 +1,10 @@
 from alttester import NotFoundException, WaitTimeOutException
 from alttester.altdriver import *
 
-from Resources.base_page import BasePage
+from Resources.screen import Screen
 
 
-class LoginScreen(BasePage):
+class LoginScreen(Screen):
 
     def guest_link(self) -> AltObject | None:
         try:

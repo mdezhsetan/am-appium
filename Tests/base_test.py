@@ -29,7 +29,7 @@ class TestBase(unittest.TestCase):
 
     def touch_and_hold(self, desired_object, duration):
         card_position = desired_object.get_screen_position()
-        self.hold_button(duration=duration, coordinates=card_position)
+        self.alt_driver.hold_button(duration=duration, coordinates=card_position)
 
     @staticmethod
     def format_2digit(number):

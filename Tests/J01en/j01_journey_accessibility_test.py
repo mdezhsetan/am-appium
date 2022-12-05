@@ -1,8 +1,5 @@
-from time import sleep
-
-from alttester import By
-
 from Resources.accounts import Accounts
+from Resources.journey import Journey
 from Resources.login_screen import LoginScreen
 from Resources.main_screen import *
 from Tests.base_test import TestBase
@@ -30,23 +27,24 @@ class TestJ01AllAboutAm(TestBase):
         # self.alt_driver.swipe(start=j01_position, end=(j01_element.x - 250, j01_element.y - 100), duration=0.6,
         #                       wait=True)
         sleep(1)
-        # j01_element.tap()
-        self.alt_driver.click(coordinates=j01_position, count=1, interval=0.5)
+        self.alt_driver.click(coordinates=j01_position)
         # self.main_screen.popup_samd_labelling_btn_ok().tap()
 
     def test_j01_accessibility_DEV_T173(self):
         self.go_to_j01()
-
-        self.take_screenshot("J01")
+        # self.take_screenshot("J01")
+        sleep(5)
         assert self.main_screen.j01_screen_is_accessible()
 
-
-    def test_j01_stages_availability(self):
-
-        # Sw j01_stage_is_available(self.main_screen.j01_s01)
-        self.format_2digit(19)
+    def test_j01_stages_availability_DEV_T174(self):
+        j1 = Journey(self.main_screen,9, 1)
+        assert j1.is_all_stages_available()
 
 
-    # def tearDown(self):
-    #     self.alt_driver.stop()
-    #     self.appium_driver.quit()
+    def test_j01_stages_playability(self):
+        self.main_screen.play_stage(self.main_screen.j01_s01)
+
+    def test_j02_stages_availability_DEV_T174(self):
+        j2 = Journey(self.main_screen, 18, 2)
+        assert j2.is_all_stages_available()
+
