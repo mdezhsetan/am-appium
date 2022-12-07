@@ -10,7 +10,7 @@ class TestJ01AllAboutAm(TestBase):
     def setUp(self):
         self.login_screen = LoginScreen(self.alt_driver, self.appium_driver)
         self.main_screen = MainScreen(self.alt_driver, self.appium_driver)
-        self.j1 = Journeys(self.alt_driver, self.appium_driver, main_screen=self.main_screen, stage_count=9,
+        self.j1 = Journeys(self.alt_driver, self.appium_driver, stage_count=9,
                            journey_number=1)
 
     def go_to_j01(self):
@@ -24,7 +24,6 @@ class TestJ01AllAboutAm(TestBase):
         journeys_card.tap()
         j01_element = getattr(self.j1, "j01_element")()
         j01_position = j01_element.get_screen_position()
-        print("\n\n\n", j01_position)
         # self.alt_driver.swipe(start=j01_position, end=(j01_element.x - 250, j01_element.y - 100), duration=0.6,wait=True)
 
         self.alt_driver.click(coordinates=j01_position)

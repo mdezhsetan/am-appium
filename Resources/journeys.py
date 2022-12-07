@@ -2,14 +2,12 @@ from time import sleep
 
 from alttester import AltDriver, AltObject
 
-from Resources.main_screen import MainScreen
 from Resources.screen import Screen
 
 
 class Journeys(Screen):
-    def __init__(self, altdriver: AltDriver, appium_driver, main_screen: MainScreen, stage_count: int,
+    def __init__(self, altdriver: AltDriver, appium_driver, stage_count: int,
                  journey_number: int):
-        self.main_screen = main_screen
         self.stage_count = stage_count
         self.journy_prefix = "j" + f'{journey_number:02}' + '_s'
 
@@ -57,4 +55,3 @@ class Journeys(Screen):
 
         self.touch_and_hold(pause_button, 9)
         self.done_button().click()
-

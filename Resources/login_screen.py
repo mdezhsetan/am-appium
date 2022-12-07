@@ -1,4 +1,3 @@
-from alttester import NotFoundException, WaitTimeOutException
 from alttester.altdriver import *
 
 from Resources.screen import Screen
@@ -6,75 +5,26 @@ from Resources.screen import Screen
 
 class LoginScreen(Screen):
 
-    # def __init__(self):
-    #     super(LoginScreen, self).__init__(elements=dict())
+    def __init__(self, altdriver: AltDriver, appium_driver):
 
-    def guest_link(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//GuestRow//Card")
-        except NotFoundException:
-            return None
-
-    def username_input(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//UsernameInputField")
-        except NotFoundException:
-            return None
-
-    def password_input(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//PasswordInputField")
-        except NotFoundException:
-            return None
-
-    def signuptoggle_link(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//SignupToggle//Create")
-        except NotFoundException:
-            return None
-
-    def signup_button(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*//SignUpButton")
-        except NotFoundException:
-            return None
-
-    def toggle_ReceiveScheduledNotifications_check(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//*///toggle_ReceiveScheduledNotifications")
-        except NotFoundException:
-            return None
-
-    def signin_button(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.NAME, "SignInButton")
-        except NotFoundException:
-            return None
-
-    def popup_after_signin(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//Canvas//PopupOverlay")
-        except NotFoundException:
-            return None
-
-    def popup_yes_button(self) -> AltObject | None:
-        try:
-            return self.alt_driver.wait_for_object(By.PATH, "//Canvas//PopupOverlay//*//YesButton")
-        except NotFoundException:
-            return None
-
-    def account_selection_screen(self) -> AltObject | None:
-        try:
-            account_selection_obj = self.alt_driver.wait_for_object(By.PATH, "/Canvas/HomeScreenNew/AccountSelection",
-                                                                    timeout=5)
-            return account_selection_obj
-        except WaitTimeOutException:
-            print("account selection screen not found!")
-            return None
+        elements = {
+            "guest_link": "//*//GuestRow//Card",
+            "username_input": "//*//UsernameInputField",
+            "password_input": "//*//PasswordInputField",
+            "signuptoggle_link": "//*//SignupToggle//Create",
+            "signup_button": "//*//SignUpButton",
+            "toggle_ReceiveScheduledNotifications_check": "//*///toggle_ReceiveScheduledNotifications",
+            "signin_button": "//*//SignInButton",
+            "popup_after_signin": "//Canvas//PopupOverlay",
+            "popup_yes_button": "//Canvas//PopupOverlay//*//YesButton",
+            "account_selection_screen": "/Canvas/HomeScreenNew/AccountSelection",
+            "OnboardingSelectionManager": "//*//OnboardingSelectionManager",
+        }
+        super(LoginScreen, self).__init__(altdriver=altdriver, appium_driver=appium_driver, elements=elements)
 
     def OnboardingSelectionManager_is_Displayed(self):
         try:
-            self.alt_driver.wait_for_object(By.PATH, "//*//OnboardingSelectionManager")
+            self.OnboardingSelectionManager()
             return True
         except Exception as ex:
             print(repr(ex))
@@ -97,6 +47,4 @@ class LoginScreen(Screen):
             return False
 
     def is_displayed(self):
-        if self.account_selection_screen() is not None:
-            return True
-        return False
+        return self.account_selection_screen() is not None
